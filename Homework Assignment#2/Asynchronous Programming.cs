@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ConsoleApp4
+namespace AsyncAssgnment
 {
 
     class Route
@@ -13,7 +13,7 @@ namespace ConsoleApp4
 
         public Route()
         {
-            Console.WriteLine($"Route {routesCounter+1} has created successfully.\n");
+            Console.WriteLine($"Route {routesCounter + 1} has created successfully.\n");
             routesCounter++;
         }
 
@@ -49,7 +49,7 @@ namespace ConsoleApp4
         {
             return routerTime;
         }
-     
+
     }
 
     class Implementation
@@ -58,7 +58,7 @@ namespace ConsoleApp4
 
         public void ImplementationMain()
         {
-            
+
             Console.WriteLine("\n List of available operations for you in below :) ");
             Console.WriteLine(".............................................\n");
             Console.WriteLine("1. Create a new route .");
@@ -68,24 +68,25 @@ namespace ConsoleApp4
             Console.Write("Enter your choice plz : ");
             int choice = Convert.ToInt32(Console.ReadLine());
 
-            while (choice != -1){
+            while (choice != -1)
+            {
                 switch (choice)
-                            {
-                                case 1:
-                                    Route route = new Route();
-                                    listOfRoutes.Add(route);
-                                    break;
-                                case 2:
-                                    AddRouterToRoute();
-                                    break;
-                                default:
-                                    Console.WriteLine("No match founded\n");
-                                    break;
-                            }
+                {
+                    case 1:
+                        Route route = new Route();
+                        listOfRoutes.Add(route);
+                        break;
+                    case 2:
+                        AddRouterToRoute();
+                        break;
+                    default:
+                        Console.WriteLine("No match founded\n");
+                        break;
+                }
                 Console.Write("Enter your choice plz . PS: enter -1 to end the operation : ");
                 choice = Convert.ToInt32(Console.ReadLine());
             }
-            
+
         }
 
         public void AddRouterToRoute()
@@ -97,7 +98,7 @@ namespace ConsoleApp4
             }
             Console.Write("Plz enter the route number you want add the router to it : ");
             int routeNumber = Convert.ToInt32(Console.ReadLine());
-            while (routeNumber <=0 || routeNumber > listOfRoutes.Count())
+            while (routeNumber <= 0 || routeNumber > listOfRoutes.Count())
             {
                 Console.Write("The Route number witch you have entered is out of range :( \nPlz enter the route number you want add the router to it again : ");
                 routeNumber = int.Parse(Console.ReadLine());
@@ -107,7 +108,7 @@ namespace ConsoleApp4
             Console.Write("Plz enter the router time : ");
             int routerTime = Convert.ToInt32(Console.ReadLine());
             router.SetRouterTime(routerTime);
-            listOfRoutes[routeNumber-1].AddNewRouter(router);
+            listOfRoutes[routeNumber - 1].AddNewRouter(router);
 
         }
 
@@ -116,7 +117,7 @@ namespace ConsoleApp4
         {
             return listOfRoutes;
         }
-        
+
     }
 
     class BestRoute
@@ -126,7 +127,7 @@ namespace ConsoleApp4
         public int GetBestRoutSync(List<Route> listOfRoutes)
         {
 
-            int sumTime = 0 , bestRout_ = int.MaxValue , numberOfBestRoute=0;
+            int sumTime = 0, bestRout_ = int.MaxValue, numberOfBestRoute = 0;
             for (int i = 0; i < listOfRoutes.Count(); i++)
             {
 
@@ -136,24 +137,24 @@ namespace ConsoleApp4
                     bestRout_ = sumTime;
                     numberOfBestRoute = i + 1;
                 }
- 
+
             }
 
             return numberOfBestRoute;
         }
 
         public int SumTime(Route route)
-         {
+        {
             int sumTime = 0;
             for (int j = 0; j < route.GetListOfRouters().Count(); j++)
             {
-                sumTime += route.GetListOfRouters()[j].GetRouterTime();         
+                sumTime += route.GetListOfRouters()[j].GetRouterTime();
             }
 
             return sumTime;
-         }
+        }
 
-        public int  GetBestRoutAsync(List<Route> listOfRoutes)
+        public int GetBestRoutAsync(List<Route> listOfRoutes)
         {
 
             int bestRout_ = int.MaxValue, numberOfBestRoute = 0;
@@ -179,7 +180,7 @@ namespace ConsoleApp4
                 {
                     sumTime += route.GetListOfRouters()[j].GetRouterTime();
                 }
- 
+
                 return sumTime;
             });
 
@@ -194,7 +195,7 @@ namespace ConsoleApp4
         static async Task Main(string[] args)
         {
 
-            int numberOfBestRoute1 = 0 , numberOfBestRoute2 = 0;
+            int numberOfBestRoute1 = 0, numberOfBestRoute2 = 0;
             Implementation Implementation_ = new Implementation();
             BestRoute bestRoute = new BestRoute();
 
