@@ -23,10 +23,24 @@ Beginning with the first requirement, which is "You need to build classes that r
   ** in this method the total time for each route will be calculated in a separate thread becouse in the first for loop it will passed on each route
   i will call SomeTime Asynchronous function which will be in await and go to another thread to made the secound instrunction .
   
+  +  I have serch about the 5 requirment " The max number of allowed parallel threads is 4 " :
+      
+                 Parallel.ForEach(listOfRoutes, new ParallelOptions { MaxDegreeOfParallelism = 4 }, async Route =>
+                {
+                        var sumTime = SumTimeAsync(listOfRoutes[i]);
+                        if (sumTime.GetAwaiter().GetResult() < bestRout_)
+                        {
+                            bestRout_ = sumTime.GetAwaiter().GetResult();
+                            numberOfBestRoute = i + 1;
+                        }
+                 });
+                 
+      thats mean that i will passed on each route at listOfRoutes and give it a condition for ParallelOptions that the MaxDegreeOfParallelism = 4 and then call the SumTimeAsync
+      function .
   
-    
+   
+   
   -Dina Alwaneh- 11925622 .
-  
   Done :)
   
   
