@@ -72,7 +72,7 @@ namespace ConsoleApp4
                 switch (choice)
                             {
                                 case 1:
-                                    Route route = CreateNewRoute();
+                                    Route route = new Route();
                                     listOfRoutes.Add(route);
                                     break;
                                 case 2:
@@ -86,15 +86,6 @@ namespace ConsoleApp4
                 choice = Convert.ToInt32(Console.ReadLine());
             }
             
-        }
-
-
-
-        public Route CreateNewRoute()
-        {
-            Route route = new Route();
-            return route;
-
         }
 
         public void AddRouterToRoute()
