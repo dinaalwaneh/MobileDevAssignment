@@ -1,1 +1,33 @@
 
+Beginning with the first requirement, which is "You need to build classes that represent the router and route":
+- I created two classes first for route and the second for router:
+
+1.a In class Route i have create list object from Router , thats mean that each route have mant Routers.
+- In addition to "AddNewRouter" methode that which receives an Router obkect as a parameter to added to the list of routers for this route and i have return the route .
+- finaly i have create a getter function "GetListOfRouters" to get the list of routers for the route .
+
+1.b In Router class i have initialized an int variable "routerTime" + setter & Getter function for it . 
+
+2. In the secound requirement, which is"You need to build a class that reads input from user to : a. Create a new route b. Add a router to given route " : 
+- First i have create an Implementation class which have to cases one for create a new route and the secound for add a router for a given route .
+- if the user choose the first case a new object from Route class will instantiation and then it will added to the list of routes .
+- if the user choose the secound option then AddRouterToRoute function will be called .
+- in AddRouterToRoute function the user will choose which route he want to add the router to it and then he/she will enter the time for thid router , finally AddNewRouter function
+  in Route class will be called and Router object will be send as a parameter to it to be added to list of routers in the route . 
+  
+  3. In the thired requirement "Create a class that contains two methods a. Sync method that calculates best route from available routes. b. Async method that calculates best route asynchronously by calculating total time required for each route in a separate thread.":
+  - I create a BestRoute class than :
+  3.a I have been created GetBestRoutSync function which will be passed on each route and call SumTime function with route object parameter to sum the total time required for it .
+  ** this methode is Sync where all the operations performed at one thread .
+  3.b 3.a I have been created GetBestRoutASync function which will be passed on each route and call SumTimeAsync function with route object parameter to sum the total time required for it .
+  ** in this method the total time for each route will be calculated in a separate thread becouse in the first for loop it will passed on each route
+  i will call SomeTime Asynchronous function which will be in await and go to another thread to made the secound instrunction .
+  
+  
+    
+  -Dina Alwaneh- 11925622 .
+  
+  Done :)
+  
+  
+  
