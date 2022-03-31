@@ -46,6 +46,11 @@ namespace Ass3.Model
                 && (staffUser == user.staffUser);
 
         }
+        
+         public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
  
     }
 }
