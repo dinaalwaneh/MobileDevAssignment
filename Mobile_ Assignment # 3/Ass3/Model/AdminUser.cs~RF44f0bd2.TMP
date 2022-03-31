@@ -1,0 +1,33 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Ass3.Model
+{
+    public class AdminUser : User
+    {
+
+        public StaffUser staffUser { set; get; }
+        public AdminUser(int Id, String Name, int Age , StaffUser staffUser) : base(Id , Name , Age)
+        {
+            this.staffUser = staffUser;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() + this.staffUser.ToString();
+        }
+
+        public override bool Equals(object value)
+        {
+
+            AdminUser adminUser = value as AdminUser;
+
+            return (base.Equals(adminUser)) && (staffUser == adminUser.staffUser);
+
+        }
+
+    }
+}
